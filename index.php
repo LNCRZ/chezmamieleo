@@ -12,7 +12,7 @@ var_dump($results);
 
 <?php foreach($results as $result): ?>
     <div class="recipe-card">
-        <img src="<?= $result['image'] ?>" alt="<?= $result['nameRecipe'] ?>">
+        <img src="<?= $result['picture'] ?>" alt="<?= $result['nameRecipe'] ?>">
         <h2><?= $result['nameRecipe'] ?></h2>
         <p><?= $result['description'] ?></p>
         <a href="recipe.php?id=<?= $result['id'] ?>">Voir la recette</a>
