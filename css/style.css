@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../assets/background.jpg");
+  background-size: cover;
+}
+.container .recipe-slider {
+  max-width: 500px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+@media screen and (max-width: 900px) {
+  .container .recipe-slider {
+    max-width: 300px;
+  }
+}
+.container .recipe-slider .slider {
+  display: flex;
+  animation: slider 10s infinite ease-in-out;
+}
+.container .slider img {
+  flex-shrink: 0;
+  width: 100%;
+}
+.container .recipe-picture {
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+}
+.container .recipe-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  border: red 2px solid;
+}
+
+@keyframes slider {
+  0%, 20% {
+    transform: translateX(0);
+  }
+  25%, 45% {
+    transform: translateX(-100%);
+  }
+  50%, 70% {
+    transform: translateX(-200%);
+  }
+  75%, 95% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-400%);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
