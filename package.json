@@ -7,7 +7,7 @@
     "watch": "sass scss/style.scss css/style.css --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "LNCRZ",
   "license": "ISC",
   "description": ""
 }

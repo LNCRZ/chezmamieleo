@@ -7,7 +7,7 @@ $pwd = 'JLjvyfGsE+j]';
 try {
     $bdd = new PDO ( "mysql:host=$host;dbname=$dbname", $username, $pwd);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $error) {
-    echo "L'erreur est: " . $error->getMessage();
+} catch (PDOException $e) {
+    echo "L'erreur est: " . $e->getMessage();
 }
        
