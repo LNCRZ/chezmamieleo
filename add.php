@@ -8,9 +8,9 @@ require_once "./config/Database.php";
 
     <form action="src/insert.php" method="POST">
         <input type="text" name="nameRecipe" placeholder="Nom de la recette" required>
-        <input type="text" name="ingredient" placeholder="Ingrédients" required>
+        <textarea name="ingredient" placeholder="Ingrédients" required></textarea>
         <textarea name="preparation" placeholder="Préparation" required></textarea>
-        <textarea name="description" placeholder="Description" required></textarea>
+        <textarea name="description" placeholder="Description"></textarea>
         <input type="text" name="author" placeholder="Auteur" required>
         <input type="text" name="picture" placeholder="URL de l'image">
         <input type="submit" value="Ajouter la recette">

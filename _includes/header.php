@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/carousel.css">
+    <link rel="stylesheet" href="../css/recipe.css">
+
     <script></script>
     <title>Les recettes de Mamie Léo</title>
 </head>
 <body>
     <header>
-        <nav>
-            <img src="" alt="Logo">
+        <nav class="nav">
+            <img src="../assets/logoChezMamieLeo2.png" alt="Logo" class="logo">
             <ul>
                 <li><a href="../index.php">Accueil</a></li>
-                <li><a href="recipes.php">Recettes</a></li>
                 <li><a href="souvenirs.php">Souvenirs</a></li>
                 <li><a href="../add.php">Ajouter</a></li>
-                <li><a href="../edit.php">Modifier</a></li>
-                <li><a href="../src/delete.php">Supprimer</a></li>
             </ul>
                 
         </nav>

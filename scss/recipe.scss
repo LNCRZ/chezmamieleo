@@ -1,0 +1,81 @@
+// Variables
+$primary-color: #000;
+$secondary-color: #ffffff;
+$text-color: #333;
+$border-radius: 10px;
+
+// Général
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+}
+
+// Container principal
+.container {
+  
+  margin: 20px auto;
+  padding: 50px;
+  background-color: $secondary-color;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: $border-radius;
+}
+.card-recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+
+// Titre de la recette
+h1 {
+  color: $primary-color;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+// Image de la recette
+.recipe-picture {
+  max-width: 50%;
+  max-height: 800px;
+  object-fit: cover;
+  border-radius: $border-radius;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+// Paragraphes descriptifs
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+p strong {
+  color: $primary-color;
+  font-weight: bold;
+}
+
+// Bouton retour
+a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: $primary-color;
+  color: $secondary-color;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: $border-radius;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}

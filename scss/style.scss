@@ -1,5 +1,8 @@
 @import "form";
 @import "carousel";
+@import "recipe";
+@import "header";
+
 
 .container {
     display: flex;
@@ -13,8 +16,7 @@
     background-position: center;
 
     h1 {
-        font-size: 4rem;
-        text-align: center;
+        display: none;
     }
 }
 
