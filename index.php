@@ -15,7 +15,7 @@ try {
 
 ?>
 <main class="container">
-    <h1>Les recettes de Mamie Léo</h1>
+    <h1 class="title-accueil">Les recettes de Mamie Léo</h1>
     <?php if (empty($results)): ?>
         <p>Aucune recette n'est disponible pour le moment.</p>
     <?php else: ?>
@@ -28,7 +28,6 @@ try {
                         alt="<?= htmlspecialchars($result['nameRecipe']) ?>"
                     >
                     <h2><?= htmlspecialchars($result['nameRecipe']) ?></h2>
-                    <p><?= htmlspecialchars($result['description']) ?></p>
                     <a id="viewRecipe" href="recipe.php?id=<?= intval($result['id']) ?>">Voir la recette</a>
                 </div>
             <?php endforeach; ?>
