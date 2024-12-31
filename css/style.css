@@ -68,7 +68,7 @@
 }
 .recipe-carousel .recipe-card .recipe-picture {
   width: 400px;
-  height: 400px;
+  height: 300px;
   border-radius: 10px;
   object-fit: cover;
 }

@@ -34,17 +34,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'] ?? '';
     $ingredient = $_POST['ingredient'] ?? '';
     $preparation = $_POST['preparation'] ?? '';
+    $picture = $_POST['picture'] ?? '';
 
     try {
         $updateStmt = $bdd->prepare("
             UPDATE recipes 
-            SET nameRecipe = :nameRecipe, description = :description, ingredient = :ingredient, preparation = :preparation 
+            SET nameRecipe = :nameRecipe, description = :description, ingredient = :ingredient, preparation = :preparation, picture = :picture 
             WHERE id = :id
         ");
         $updateStmt->bindParam(':nameRecipe', $nameRecipe, PDO::PARAM_STR);
         $updateStmt->bindParam(':description', $description, PDO::PARAM_STR);
         $updateStmt->bindParam(':ingredient', $ingredient, PDO::PARAM_STR);
         $updateStmt->bindParam(':preparation', $preparation, PDO::PARAM_STR);
+        $updateStmt->bindParam(':picture', $picture, PDO::PARAM_STR);
         $updateStmt->bindParam(':id', $id, PDO::PARAM_INT);
         $updateStmt->execute();
 
@@ -71,6 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <label for="preparation">Instructions :</label>
         <textarea id="preparation" name="preparation" required><?= htmlspecialchars($recipe['preparation']) ?></textarea>
+
+        <label for="picture">URL de l'image :</label>
+        <input type="text" id="picture" name="picture" value="<?= htmlspecialchars($recipe['picture']) ?>">
 
         <button type="submit">Enregistrer les modifications</button>
     </form>
