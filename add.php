@@ -13,6 +13,13 @@ require_once "./config/Database.php";
         <textarea name="description" placeholder="Description"></textarea>
         <input type="text" name="author" placeholder="Auteur" required>
         <input type="text" name="picture" placeholder="URL de l'image">
+        <label>Catégorie :</label><br>
+            <input type="radio" name="categoryRecipe" value="apero"> Apéro<br>
+            <input type="radio" name="categoryRecipe" value="boisson"> Boisson<br>
+            <input type="radio" name="categoryRecipe" value="entree"> Entrée<br>
+            <input type="radio" name="categoryRecipe" value="plat"> Plat<br>
+            <input type="radio" name="categoryRecipe" value="dessert"> Dessert<br>
+            <input type="radio" name="categoryRecipe" value="gouter"> Goûter<br>
         <input type="submit" value="Ajouter la recette">
     </form>
     </div>

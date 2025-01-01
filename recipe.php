@@ -30,6 +30,7 @@ try {
 <main class="container">
     <div id="card-recipe" class="card-recipe">
         <h1><?= htmlspecialchars($recipe['nameRecipe']) ?></h1>
+        <h2><?= htmlspecialchars($recipe['categoryRecipe']) ?></h2>
         <img 
             class="recipe-picture" 
             src="<?= htmlspecialchars($recipe['picture']) ?: './assets/default.jpg' ?>" 

@@ -35,11 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ingredient = $_POST['ingredient'] ?? '';
     $preparation = $_POST['preparation'] ?? '';
     $picture = $_POST['picture'] ?? '';
+    $categoryRecipe = $_POST['categoryRecipe'] ?? '';
 
     try {
         $updateStmt = $bdd->prepare("
             UPDATE recipes 
-            SET nameRecipe = :nameRecipe, description = :description, ingredient = :ingredient, preparation = :preparation, picture = :picture 
+            SET nameRecipe = :nameRecipe, description = :description, ingredient = :ingredient, preparation = :preparation, picture = :picture, categoryRecipe = :categoryRecipe 
             WHERE id = :id
         ");
         $updateStmt->bindParam(':nameRecipe', $nameRecipe, PDO::PARAM_STR);
@@ -47,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $updateStmt->bindParam(':ingredient', $ingredient, PDO::PARAM_STR);
         $updateStmt->bindParam(':preparation', $preparation, PDO::PARAM_STR);
         $updateStmt->bindParam(':picture', $picture, PDO::PARAM_STR);
+        $updateStmt->bindParam(':categoryRecipe', $categoryRecipe, PDO::PARAM_STR);
         $updateStmt->bindParam(':id', $id, PDO::PARAM_INT);
         $updateStmt->execute();
 
@@ -76,6 +78,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <label for="picture">URL de l'image :</label>
         <input type="text" id="picture" name="picture" value="<?= htmlspecialchars($recipe['picture']) ?>">
+
+        <label for="categoryRecipe">Categorie :</label>
+        <select id="categoryRecipe" name="categoryRecipe" required>
+            <option value="apero" <?= $recipe['categoryRecipe'] === 'apero' ? 'selected' : '' ?>>Apéro</option>
+            <option value="boisson" <?= $recipe['categoryRecipe'] === 'boisson' ? 'selected' : '' ?>>Boisson</option>
+            <option value="entree" <?= $recipe['categoryRecipe'] === 'entree' ? 'selected' : '' ?>>Entrée</option>
+            <option value="plat" <?= $recipe['categoryRecipe'] === 'plat' ? 'selected' : '' ?>>Plat</option>
+            <option value="dessert" <?= $recipe['categoryRecipe'] === 'dessert' ? 'selected' : '' ?>>Dessert</option>
+            <option value="gouter" <?= $recipe['categoryRecipe'] === 'gouter' ? 'selected' : '' ?>>Goûter</option>
+        </select>
 
         <button type="submit">Enregistrer les modifications</button>
     </form>
