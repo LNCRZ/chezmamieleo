@@ -1,6 +1,12 @@
 <?php 
 require_once "./_includes/header.php";
 require_once "./config/Database.php";
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
 ?>
 <div class="container">
     <h1>Ajouter une nouvelle recette</h1>

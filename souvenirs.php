@@ -1,8 +1,18 @@
 <?php
 require_once "./_includes/header.php";
+require_once "./config/Database.php";
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
 ?>
 <main class="main-souvenirs">
     <div class="intro">
+        <h1>Bienvenue, <?= htmlspecialchars($_SESSION['username']) ?> !</h1>
+        <a href="logout.php">Se déconnecter</a>
         <h2>Chez Mamie Léo on cuisine avec le coeur</h2>
         <p>Ce site a été conçu avant tout comme une capsule de souvenirs familiaux et une invitation à partager des moments précieux en cuisine. L'idée est de rassembler un véritable trésor culinaire, composé de recettes transmises de génération en génération ou créées au fil du temps. Ces recettes sont bien plus que des instructions de cuisine : elles portent avec elles des souvenirs d'enfance, des éclats de rire, et des moments de convivialité autour de bons petits plats.
 
