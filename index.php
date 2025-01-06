@@ -21,43 +21,46 @@ try {
     $results = [];
 }
 ?>
-<main class="container">
-    <h1 class="title-accueil">Les recettes de Mamie Léo</h1>
-    
-    <!-- Formulaire pour filtrer par catégorie -->
-    <form method="GET" action="index.php">
-        <label for="filter_category">Filtrer par catégorie :</label>
-        <select name="filter_category" id="filter_category">
-            <option value="">Toutes</option>
-            <option value="apéro" <?= $filterCategory == 'apéro' ? 'selected' : '' ?>>Apéro</option>
-            <option value="boisson" <?= $filterCategory == 'boisson' ? 'selected' : '' ?>>Boisson</option>
-            <option value="entrée" <?= $filterCategory == 'entrée' ? 'selected' : '' ?>>Entrée</option>
-            <option value="plat" <?= $filterCategory == 'plat' ? 'selected' : '' ?>>Plat</option>
-            <option value="dessert" <?= $filterCategory == 'dessert' ? 'selected' : '' ?>>Dessert</option>
-            <option value="goûter" <?= $filterCategory == 'goûter' ? 'selected' : '' ?>>Goûter</option>
-        </select>
-        <button type="submit">Filtrer</button>
-    </form>
+<main>
+    <div class="container-filter">
+        <!-- Formulaire pour filtrer par catégorie -->
+        <form method="GET" action="index.php">
+            <label for="filter_category">Filtrer par catégorie :</label>
+            <select name="filter_category" id="filter_category">
+                <option value="">Toutes</option>
+                <option value="apéro" <?= $filterCategory == 'apéro' ? 'selected' : '' ?>>Apéro</option>
+                <option value="boisson" <?= $filterCategory == 'boisson' ? 'selected' : '' ?>>Boisson</option>
+                <option value="entrée" <?= $filterCategory == 'entrée' ? 'selected' : '' ?>>Entrée</option>
+                <option value="plat" <?= $filterCategory == 'plat' ? 'selected' : '' ?>>Plat</option>
+                <option value="dessert" <?= $filterCategory == 'dessert' ? 'selected' : '' ?>>Dessert</option>
+                <option value="goûter" <?= $filterCategory == 'goûter' ? 'selected' : '' ?>>Goûter</option>
+            </select>
+            <button type="submit" id="filterBtn">Filtrer</button>
+        </form>
+    </div>
 
-    <?php if (empty($results)): ?>
-        <p>Aucune recette n'est disponible pour le moment.</p>
-    <?php else: ?>
-        <div id="recipe-carousel" class="recipe-carousel">
-            <?php foreach ($results as $result): ?>
-                <div class="recipe-card">
-                    <img 
-                        class="recipe-picture" 
-                        src="<?= htmlspecialchars($result['picture']) ?: './assets/default.jpg' ?>" 
-                        alt="<?= htmlspecialchars($result['nameRecipe']) ?>"
-                    >
-                    <h2><?= htmlspecialchars($result['nameRecipe']) ?></h2>
-                    <p><?= htmlspecialchars($result['categoryRecipe']) ?></p>
-                    <a id="viewRecipe" href="recipe.php?id=<?= intval($result['id']) ?>">Voir la recette</a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <button id="nextRecipe">Recette suivante</button>
-    <?php endif; ?>
+    <div class="container-accueil">
+        <h1 class="title-accueil">Les recettes de Mamie Léo</h1>
+        <?php if (empty($results)): ?>
+            <p>Aucune recette n'est disponible pour le moment.</p>
+        <?php else: ?>
+            <div id="recipe-carousel" class="recipe-carousel">
+                <?php foreach ($results as $result): ?>
+                    <div class="recipe-card">
+                        <img 
+                            class="carousel-picture" 
+                            src="<?= htmlspecialchars($result['picture']) ?: './assets/default.jpg' ?>" 
+                            alt="<?= htmlspecialchars($result['nameRecipe']) ?>"
+                        >
+                        <h2><?= htmlspecialchars($result['nameRecipe']) ?></h2>
+                        <p><?= htmlspecialchars($result['categoryRecipe']) ?></p>
+                        <a id="viewRecipe" href="recipe.php?id=<?= intval($result['id']) ?>">Voir la recette</a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <button id="nextRecipe">Recette suivante</button>
+        <?php endif; ?>
+    </div>
 </main>
 <?php
 require_once "./_includes/footer.php";

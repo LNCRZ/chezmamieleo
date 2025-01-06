@@ -27,7 +27,7 @@ try {
     exit;
 }
 ?>
-<main class="container">
+<main class="container-recipe">
     <div id="card-recipe" class="card-recipe">
         <h1><?= htmlspecialchars($recipe['nameRecipe']) ?></h1>
         <h2><?= htmlspecialchars($recipe['categoryRecipe']) ?></h2>
@@ -48,7 +48,7 @@ try {
             </form>
         </div>
     </div>
-    <a href="index.php">Retour à la liste des recettes</a>
+    <a href="index.php" class="btn">Retour à la liste des recettes</a>
 </main>
 <?php
 require_once "./_includes/footer.php";

@@ -13,9 +13,9 @@
         <nav class="nav">
             <img src="../assets/logoChezMamieLeo2.png" alt="Logo" class="logo">
             <ul>
-                <li><a href="../index.php">Accueil</a></li>
-                <li><a href="souvenirs.php">Souvenirs</a></li>
-                <li><a href="../add.php">Ajouter</a></li>
+                <li><a href="../index.php" class="btn-nav">Accueil</a></li>
+                <li><a href="souvenirs.php" class="btn-nav">Souvenirs</a></li>
+                <li><a href="../add.php" class="btn-nav">Ajouter</a></li>
             </ul>
                 
         </nav>

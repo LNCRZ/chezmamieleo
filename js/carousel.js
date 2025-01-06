@@ -4,14 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextButton = document.getElementById("nextRecipe");
     let currentIndex = 0;
 
-    // Cacher toutes les cartes sauf la première
-    for (let i = 1; i < cards.length; i++) {
-        cards[i].style.display = 'none';
-    }
+    // Ajoute la classe "active" à la première carte
+    cards[currentIndex].classList.add("active");
 
-    nextButton.addEventListener('click', function() {
-        cards[currentIndex].style.display = 'none';
+    nextButton.addEventListener("click", function () {
+        // Retirer la classe "active" de la carte actuelle
+        cards[currentIndex].classList.remove("active");
+
+        // Passer à la carte suivante
         currentIndex = (currentIndex + 1) % cards.length;
-        cards[currentIndex].style.display = 'block';
+
+        // Ajouter la classe "active" à la nouvelle carte
+        cards[currentIndex].classList.add("active");
     });
 });

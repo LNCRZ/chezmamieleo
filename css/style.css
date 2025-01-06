@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .recipe-form {
   width: 100%;
   max-width: 70%;
@@ -48,40 +49,65 @@
   background-color: #d93f24;
 }
 
-.recipe-carousel {
+#recipe-carousel {
+  position: relative;
   width: 100%;
   max-width: 70%;
+  height: 60vh;
   margin: 0 auto;
+  overflow: hidden; /* Empêche les débordements */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.recipe-carousel .recipe-card {
-  flex: 0 0 100%;
+
+.recipe-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 40px;
-  height: 60vh;
+  gap: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: white;
   border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Cachée par défaut */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(0.95); /* Réduit légèrement la carte */
 }
-.recipe-carousel .recipe-card .recipe-picture {
-  width: 400px;
-  height: 300px;
-  border-radius: 10px;
+
+.recipe-card.active {
+  opacity: 1; /* Visible */
+  transform: scale(1); /* Taille normale */
+}
+
+.carousel-picture {
+  height: 30vh;
   object-fit: cover;
+  border-radius: 10px;
 }
-.recipe-carousel .recipe-card h2 {
+
+h2 {
+  margin-top: 10px;
   font-size: 1.5rem;
-  margin: 0;
+  text-align: center;
 }
-.recipe-carousel .recipe-card p {
+
+p {
   font-size: 1rem;
   text-align: center;
-  margin: 10px 0;
 }
-.recipe-carousel .recipe-card #viewRecipe {
+
+#viewRecipe {
   text-decoration: none;
   color: #fff;
   background-color: #000000;
@@ -92,11 +118,11 @@
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
-.recipe-carousel .recipe-card #viewRecipe:hover {
+#viewRecipe:hover {
   background-color: #ff1516;
 }
 
-#nextRecipe {
+#nextRecipe, #filterBtn {
   text-decoration: none;
   color: #fff;
   background-color: #000000;
@@ -107,8 +133,17 @@
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
-#nextRecipe:hover {
+#nextRecipe:hover, #filterBtn:hover {
   background-color: #FF1516;
+}
+
+#filter_category {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #f7f7f7;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 body {
@@ -119,12 +154,16 @@ body {
   padding: 0;
 }
 
-.container {
-  margin: 20px auto;
-  padding: 50px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+.container-recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: auto;
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
 }
 
 .card-recipe {
@@ -166,7 +205,7 @@ p strong {
   font-weight: bold;
 }
 
-a {
+.btn {
   display: inline-block;
   padding: 10px 20px;
   background-color: #000;
@@ -176,7 +215,7 @@ a {
   border-radius: 10px;
   transition: background-color 0.3s ease;
 }
-a:hover {
+.btn:hover {
   background-color: black;
 }
 
@@ -230,12 +269,9 @@ a:hover {
 
 header {
   width: 100%;
-  height: 200px;
+  max-height: 200px;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -247,38 +283,90 @@ header ul {
   list-style: none;
   width: 100%;
 }
-header ul li {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 200px;
-  height: 200px;
+header ul .btn-nav {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+header ul .btn-nav:hover {
+  color: #ff1516;
 }
 header .nav {
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 header .logo {
-  display: flex;
-  align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
 
-.container {
+.main-souvenirs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.intro {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  min-height: 90vh;
-  width: 90%;
+  height: auto;
+}
+.intro p {
+  font-size: 1.2rem;
+  text-align: justify;
+  width: 70%;
+  margin: 10px;
+}
+
+.container-souvenirs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: auto;
   background-image: url("../assets/bg.jpg");
   background-size: cover;
   background-position: center;
+  padding: 30px;
 }
-.container .title-accueil {
+.container-souvenirs .img-souvenirs {
+  width: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  height: auto;
+}
+
+.container-accueil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: auto;
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
+}
+.container-accueil .title-accueil {
   display: none;
 }
 

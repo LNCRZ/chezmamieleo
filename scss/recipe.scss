@@ -13,13 +13,17 @@ body {
   padding: 0;
 }
 
-// Container principal
-.container {
-  margin: 20px auto;
-  padding: 50px;
-  background-color: $secondary-color;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: $border-radius;
+// Container de la recette
+.container-recipe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    background-image: url("../assets/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
 }
 .card-recipe {
   display: flex;
@@ -64,7 +68,7 @@ p strong {
 }
 
 // Bouton retour
-a {
+.btn {
   display: inline-block;
   padding: 10px 20px;
   background-color: $primary-color;
