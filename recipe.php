@@ -1,6 +1,26 @@
 <?php
-require_once "./_includes/header.php"; 
-require_once "./config/Database.php";
+session_start();
+
+require_once './_includes/header.php';
+require_once './config/Database.php';
+
+// Vérifiez si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    echo "Vous devez être connecté pour accéder à cette page.";
+    header("Location: login.php");
+    exit;
+}
+
+// Vérifiez si le rôle est défini
+if (!isset($_SESSION['role'])) {
+    echo "Votre rôle n'est pas défini. Veuillez vous reconnecter.";
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
+
+// Accès sécurisé à l'ID utilisateur
+$userId = $_SESSION['user_id'];
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     echo "<p>Recette introuvable.</p>";
@@ -10,11 +30,22 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
+
 try {
     $stmt = $bdd->prepare("SELECT * FROM recipes WHERE id = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
+
+    // Débogage
+    // echo "Requête SQL : " . $stmt->queryString . "<br>";
+    // echo "Paramètres : ";
+    // $stmt->debugDumpParams();
+    // echo "<br>";
+
     $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Débogage
+    // var_dump($recipe);
 
     if (!$recipe) {
         echo "<p>Recette introuvable.</p>";
@@ -41,11 +72,16 @@ try {
         <p><strong>Instructions :</strong> <?= nl2br(htmlspecialchars($recipe['preparation'])) ?></p>
 
         <div class="buttons">
-            <a href="edit_recipe.php?id=<?= $id ?>" class="btn modify">Modifier</a>
-            <form action="delete_recipe.php" method="POST" class="delete-form">
-                <input type="hidden" name="id" value="<?= $id ?>">
-                <button type="submit" class="btn delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')">Supprimer</button>
-            </form>
+            <?php if ($_SESSION['role'] === 'admin'): ?>
+                <form method="POST" action="edit_recipe.php">
+                    <input type="hidden" name="recipe_id" value="<?= $recipe['id'] ?>">
+                    <button type="submit">Modifier</button>
+                </form>
+                <form method="POST" action="delete_recipe.php" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?');">
+                    <input type="hidden" name="recipe_id" value="<?= $recipe['id'] ?>">
+                    <button type="submit">Supprimer</button>
+                </form>
+            <?php endif; ?>
         </div>
     </div>
     <a href="index.php" class="btn">Retour à la liste des recettes</a>

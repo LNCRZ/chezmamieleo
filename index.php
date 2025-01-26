@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once "./_includes/header.php"; 
 require_once "./config/Database.php";
 
@@ -46,6 +48,7 @@ try {
         <?php else: ?>
             <div id="recipe-carousel" class="recipe-carousel">
                 <?php foreach ($results as $result): ?>
+                    
                     <div class="recipe-card">
                         <img 
                             class="carousel-picture" 
@@ -54,7 +57,9 @@ try {
                         >
                         <h2><?= htmlspecialchars($result['nameRecipe']) ?></h2>
                         <p><?= htmlspecialchars($result['categoryRecipe']) ?></p>
-                        <a id="viewRecipe" href="recipe.php?id=<?= intval($result['id']) ?>">Voir la recette</a>
+                        <a class="viewRecipe" href="recipe.php?id=<?= intval($result['id']) ?>" 
+                            data-recipe-id="<?= intval($result['id']) ?>">Voir la recette
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>

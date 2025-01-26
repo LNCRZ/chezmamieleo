@@ -1,6 +1,13 @@
 <?php
+session_start();
+
 require_once './_includes/header.php';
 require_once './config/Database.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     echo "<p>Recette introuvable.</p>";

@@ -1,6 +1,6 @@
 <?php 
-
 session_start();
+
 require_once "./_includes/header.php";
 require_once "./config/Database.php";
 
@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Connexion réussie
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
+            $_SESSION['role'] = $user['role'];
             header("Location: souvenirs.php");
             exit;
         } else {

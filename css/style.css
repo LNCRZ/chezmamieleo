@@ -49,7 +49,7 @@
   background-color: #d93f24;
 }
 
-#recipe-carousel {
+.recipe-carousel {
   position: relative;
   width: 100%;
   max-width: 70%;
@@ -107,7 +107,7 @@ p {
   text-align: center;
 }
 
-#viewRecipe {
+.viewRecipe {
   text-decoration: none;
   color: #fff;
   background-color: #000000;
@@ -118,7 +118,7 @@ p {
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
-#viewRecipe:hover {
+.viewRecipe:hover {
   background-color: #ff1516;
 }
 
