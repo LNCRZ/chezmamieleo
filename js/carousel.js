@@ -1,54 +1,51 @@
+const nextRecipe = document.getElementById("nextRecipe");
+
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM chargé");
+  console.log("DOM chargé");
 
-    // Fonction pour initialiser le carousel
-    function initCarousel() {
-        const carousel = document.querySelector("#recipe-carousel");
-        console.log("Carousel trouvé:", carousel);
+  // Fonction pour initialiser le carousel
+  function initCarousel() {
+    const carousel = document.querySelector("#recipe-carousel");
+    console.log("Carousel trouvé:", carousel);
 
-        if (carousel) {
-            const cards = carousel.querySelectorAll(".recipe-card");
-            console.log("Nombre de cartes trouvées:", cards.length);
+    if (carousel) {
+      const cards = carousel.querySelectorAll(".recipe-card");
+      console.log("Nombre de cartes trouvées:", cards.length);
 
-            if (cards.length > 0) {
-                let currentIndex = 0;
-                cards[currentIndex].classList.add("active");
+      if (cards.length > 0) {
+        let currentIndex = 0;
+        cards[currentIndex].classList.add("active");
 
-                const nextButton = document.getElementById("nextRecipe");
-                if (nextButton) {
-                    nextButton.addEventListener("click", function () {
-                        cards[currentIndex].classList.remove("active");
-                        currentIndex = (currentIndex + 1) % cards.length;
-                        cards[currentIndex].classList.add("active");
-                    });
-                } else {
-                    console.warn("Bouton 'Recette suivante' non trouvé");
-                }
-            } else {
-                console.warn("Aucune carte n'est présente dans le carousel.");
-            }
+        const nextButton = document.getElementById("nextRecipe");
+        if (nextButton) {
+          nextButton.addEventListener("click", function () {
+            cards[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % cards.length;
+            cards[currentIndex].classList.add("active");
+          });
         } else {
-            console.warn("Le carousel n'a pas été trouvé dans le DOM");
+          console.warn("Bouton 'Recette suivante' non trouvé");
         }
+      } else {
+        console.warn("Aucune carte n'est présente dans le carousel.");
+      }
+    } else {
+      console.warn("Le carousel n'a pas été trouvé dans le DOM");
     }
+  }
 
-    // Fonction pour gérer les liens de recette
-    function handleRecipeLinks() {
-        const recipeLinks = document.querySelectorAll('.viewRecipe');
-        console.log("Nombre de liens de recette trouvés:", recipeLinks.length);
+  // Initialiser le carousel et les liens
+  initCarousel();
 
-        recipeLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const href = this.href;
-                const recipeId = this.dataset.recipeId;
-                console.log('Redirection vers:', href, 'ID:', recipeId);
-                window.location.href = href;
-            });
-        });
+  nextRecipe.addEventListener("click", function () {
+    const allViewRecipes = document.querySelectorAll(".viewRecipe");
+    for (let i = 0; i < allViewRecipes.length; i++) {
+      let active = allViewRecipes[i].classList.contains("active");
+      if (active) {
+        allViewRecipes[i].style.zIndex = 1;
+        continue;
+      }
+      allViewRecipes[i].style.zIndex = 0;
     }
-
-    // Initialiser le carousel et les liens
-    initCarousel();
-    handleRecipeLinks();
+  });
 });

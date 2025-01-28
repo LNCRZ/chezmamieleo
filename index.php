@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once "./_includes/header.php"; 
+require_once "./_includes/header.php";
 require_once "./config/Database.php";
 
 // Récupérer la catégorie sélectionnée dans le formulaire
@@ -48,16 +48,15 @@ try {
         <?php else: ?>
             <div id="recipe-carousel" class="recipe-carousel">
                 <?php foreach ($results as $result): ?>
-                    
+
                     <div class="recipe-card">
-                        <img 
-                            class="carousel-picture" 
-                            src="<?= htmlspecialchars($result['picture']) ?: './assets/default.jpg' ?>" 
-                            alt="<?= htmlspecialchars($result['nameRecipe']) ?>"
-                        >
+                        <img
+                            class="carousel-picture"
+                            src="<?= htmlspecialchars($result['picture']) ?: './assets/default.jpg' ?>"
+                            alt="<?= htmlspecialchars($result['nameRecipe']) ?>">
                         <h2><?= htmlspecialchars($result['nameRecipe']) ?></h2>
                         <p><?= htmlspecialchars($result['categoryRecipe']) ?></p>
-                        <a class="viewRecipe" href="recipe.php?id=<?= intval($result['id']) ?>" 
+                        <a class="viewRecipe" href="recipe.php?id=<?= intval($result['id']) ?>"
                             data-recipe-id="<?= intval($result['id']) ?>">Voir la recette id = <?= intval($result['id']) ?>
                         </a>
                     </div>
