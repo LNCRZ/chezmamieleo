@@ -11,12 +11,9 @@ $categoryRecipe = htmlspecialchars($_POST['categoryRecipe']);
 
 echo $nameRecipe ." ". $ingredient ." ". $preparation ." ". $description ." ". $author ." ". $picture ." ". $categoryRecipe;
 
-$bdd = new PDO('mysql:host=188.165.47.99;dbname=amrvagll_chezmamieleo', 'amrvagll_chezmamieleo', 'JLjvyfGsE+j]');
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 $sql = "INSERT INTO recipes (nameRecipe, ingredient, preparation, description, author, picture, categoryRecipe) VALUES (:nameRecipe, :ingredient, :preparation, :description, :author, :picture, :categoryRecipe)";
-$query = $bdd->prepare($sql);
-$query->execute([
+$stmt = $bdd->prepare($sql);
+$stmt->execute([
     'nameRecipe' => $nameRecipe,
     'ingredient' => $ingredient,
     'preparation' => $preparation,

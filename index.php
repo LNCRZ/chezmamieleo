@@ -58,7 +58,7 @@ try {
                         <h2><?= htmlspecialchars($result['nameRecipe']) ?></h2>
                         <p><?= htmlspecialchars($result['categoryRecipe']) ?></p>
                         <a class="viewRecipe" href="recipe.php?id=<?= intval($result['id']) ?>" 
-                            data-recipe-id="<?= intval($result['id']) ?>">Voir la recette
+                            data-recipe-id="<?= intval($result['id']) ?>">Voir la recette id = <?= intval($result['id']) ?>
                         </a>
                     </div>
                 <?php endforeach; ?>
