@@ -14,7 +14,7 @@
   align-items: center;
   gap: 1rem;
 }
-.recipe-form input[type=text],
+.recipe-form input[type="text"],
 .recipe-form textarea {
   width: 90%;
   padding: 0.8rem;
@@ -24,7 +24,7 @@
   font-size: 1rem;
   transition: border-color 0.3s ease;
 }
-.recipe-form input[type=text]:focus,
+.recipe-form input[type="text"]:focus,
 .recipe-form textarea:focus {
   border-color: #f04e30;
   outline: none;
@@ -33,7 +33,7 @@
   min-height: 100px;
   resize: vertical;
 }
-.recipe-form input[type=submit] {
+.recipe-form input[type="submit"] {
   width: 50%;
   padding: 0.8rem;
   margin-bottom: 1rem;
@@ -45,7 +45,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.recipe-form input[type=submit]:hover {
+.recipe-form input[type="submit"]:hover {
   background-color: #d93f24;
 }
 
@@ -80,13 +80,13 @@
   background: white;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  opacity: 0; /* Cachée par défaut */
+  display: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
   transform: scale(0.95); /* Réduit légèrement la carte */
 }
 
 .recipe-card.active {
-  opacity: 1; /* Visible */
+  display: block;
   transform: scale(1); /* Taille normale */
 }
 
@@ -122,7 +122,8 @@ p {
   background-color: #ff1516;
 }
 
-#nextRecipe, #filterBtn {
+#nextRecipe,
+#filterBtn {
   text-decoration: none;
   color: #fff;
   background-color: #000000;
@@ -133,8 +134,9 @@ p {
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
-#nextRecipe:hover, #filterBtn:hover {
-  background-color: #FF1516;
+#nextRecipe:hover,
+#filterBtn:hover {
+  background-color: #ff1516;
 }
 
 #filter_category {
