@@ -4,19 +4,6 @@ session_start();
 require_once './_includes/header.php';
 require_once './config/Database.php';
 
-
-error_log("Recipe.php started");
-error_log("REQUEST_URI: " . $_SERVER['REQUEST_URI']);
-error_log("GET parameters: " . json_encode($_GET));
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-echo "URL complète : " . $_SERVER['REQUEST_URI'] . "<br>";
-echo "Contenu de \$_GET : ";
-var_dump($_GET);
-echo "<br>";
-
-
 // Vérifiez si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
     echo "Vous devez être connecté pour accéder à cette page.";
@@ -49,16 +36,7 @@ try {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
-    // Débogage
-    // echo "Requête SQL : " . $stmt->queryString . "<br>";
-    // echo "Paramètres : ";
-    // $stmt->debugDumpParams();
-    // echo "<br>";
-
     $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Débogage
-    // var_dump($recipe);
 
     if (!$recipe) {
         echo "<p>Recette introuvable.</p>";
