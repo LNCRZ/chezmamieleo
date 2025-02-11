@@ -42,6 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <label for="passwd">Mot de passe :</label>
             <input type="passwd" name="passwd" id="passwd" required>
+
+            <a href="#">Mot de passe oublié</a>
+            
             
             <button type="submit">Se connecter</button>
         </form>

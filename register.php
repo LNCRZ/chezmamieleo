@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'passwd' => $passwd
         ]);
         echo "Inscription réussie !";
+        header("Location: login.php");
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
     }

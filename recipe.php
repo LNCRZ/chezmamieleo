@@ -66,11 +66,11 @@ try {
             <?php if ($_SESSION['role'] === 'admin'): ?>
                 <form method="POST" action="edit_recipe.php">
                     <input type="hidden" name="recipe_id" value="<?= $recipe['id'] ?>">
-                    <button type="submit">Modifier</button>
+                    <button type="submit" class="btn modify">Modifier</button>
                 </form>
                 <form method="POST" action="delete_recipe.php" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?');">
                     <input type="hidden" name="recipe_id" value="<?= $recipe['id'] ?>">
-                    <button type="submit">Supprimer</button>
+                    <button type="submit" class="btn delete">Supprimer</button>
                 </form>
             <?php endif; ?>
         </div>

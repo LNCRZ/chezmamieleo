@@ -16,6 +16,10 @@
                 <li><a href="../index.php" class="btn-nav">Accueil</a></li>
                 <li><a href="souvenirs.php" class="btn-nav">Souvenirs</a></li>
                 <li><a href="../add.php" class="btn-nav">Ajouter</a></li>
+                <li><a href="../register.php" class="btn-nav">S'inscrire</a></li>
+                <li><a href="../login.php" class="btn-nav">Connexion</a></li>
+                <li><a href="../logout.php" class="btn-nav">Déconnexion</a></li>
+
             </ul>
                 
         </nav>
